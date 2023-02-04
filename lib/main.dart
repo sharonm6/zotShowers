@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:zotshowers/anteater_status.dart';
+import 'package:go_router/go_router.dart';
+import 'package:zotshowers/home_screen.dart';
 import 'package:zotshowers/logic.dart';
-import 'package:zotshowers/shower_calendar.dart';
-import 'package:zotshowers/showering_prompt.dart';
+import 'package:zotshowers/shop_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -17,27 +17,31 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
+  final GoRouter _router = GoRouter(
+    routes: <RouteBase>[
+      GoRoute(
+        path: '/',
+        builder: (BuildContext context, GoRouterState state) {
+          return const HomeScreen();
+        },
+        routes: <RouteBase>[
+          GoRoute(
+            path: 'shop',
+            builder: (BuildContext context, GoRouterState state) {
+              return const ShopScreen();
+            },
+          ),
+        ],
+      ),
+    ],
+  );
+
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (_) => UserDataCubit(),
-      child: MaterialApp(
-        home: Scaffold(
-          backgroundColor: Colors.blueAccent,
-          body: SingleChildScrollView(
-            child: BlocBuilder<UserDataCubit, UserData>(
-              builder: (context, state) {
-                return Column(
-                  children: [
-                    AnteaterStatus(data: state),
-                    ShoweringPrompt(data: state),
-                    ShowerCalendar(data:state),
-                  ],
-                );
-              },
-            ),
-          ),
-        ),
+      child: MaterialApp.router(
+        routerConfig: _router,
       ),
     );
   }
