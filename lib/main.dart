@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:zotshowers/anteater_status.dart';
+import 'package:zotshowers/shower_calendar.dart';
+import 'package:zotshowers/showering_prompt.dart';
 
 void main() {
   runApp(const MyApp());
@@ -10,9 +13,13 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: const Scaffold(
-        body: Center(
-          child: Text("ZOT SHOWERS!!"),
+      home: Scaffold(
+        body: Column(
+          children: [
+            AnteaterStatus(),
+            ShoweringPrompt(),
+            ShowerCalendar(),
+          ],
         ),
       ),
     );
