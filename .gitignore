@@ -8,8 +8,8 @@ pubspec.lock
 
 # testing
 /coverage
-.dart_tool
-.idea
+.dart_tool/
+.idea/
 
 # next.js
 /.next/

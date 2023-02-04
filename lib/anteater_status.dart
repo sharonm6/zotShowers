@@ -6,6 +6,20 @@ class AnteaterStatus extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Container(
+      color: Colors.blue,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Text(
+            "Zot Showers!!!",
+            style: TextStyle(color: Colors.white),
+            textAlign: TextAlign.center,
+          ),
+          Image.asset("assets/anteater.jpeg", height: 200),
+        ],
+      ),
+    );
   }
 }

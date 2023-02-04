@@ -14,12 +14,14 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        body: Column(
-          children: [
-            AnteaterStatus(),
-            ShoweringPrompt(),
-            ShowerCalendar(),
-          ],
+        body: SingleChildScrollView(
+          child: Column(
+            children: [
+              AnteaterStatus(),
+              ShoweringPrompt(),
+              ShowerCalendar(),
+            ],
+          ),
         ),
       ),
     );
