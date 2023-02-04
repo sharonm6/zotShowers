@@ -57,7 +57,10 @@ class AnteaterStatus extends StatelessWidget {
         ),
         SizedBox(height: 16),
         SizedBox(
-            child: Image.asset(statusImg, fit: BoxFit.fitHeight), height: 350)
+            child: Image.asset(statusImg, fit: BoxFit.fitHeight), height: 350),
+            SizedBox(
+              height: 20
+            )
       ],
     );
   }

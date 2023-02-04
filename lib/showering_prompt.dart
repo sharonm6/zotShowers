@@ -10,6 +10,15 @@ class ShoweringPrompt extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    if (data.didShowerToday()) {
+      return Text(
+      "Foo showered today! \n Your fellow anteaters thank you!", 
+      style: TextStyle(color: Colors.white,
+      fontSize: 25 ),
+      textAlign: TextAlign.center,
+      );
+
+    }
     return Card(
       child: SizedBox(
         width: 300,
