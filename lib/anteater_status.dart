@@ -17,7 +17,7 @@ class AnteaterStatus extends StatelessWidget {
             style: TextStyle(color: Colors.white),
             textAlign: TextAlign.center,
           ),
-          Image.asset("assets/anteater.jpeg", height: 200),
+          Image.asset("assets/anteater2.jpeg", height: 200),
         ],
       ),
     );
