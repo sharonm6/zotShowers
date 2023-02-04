@@ -4,7 +4,7 @@ class UserData with ChangeNotifier {
   final Map<DateTime, bool> showerMap = {};
 
   bool didShowerToday() {
-    return didShowerOnDay(_today());
+    return didShowerOnDay(today());
   }
 
   bool didShowerOnDay(DateTime day) {
@@ -12,11 +12,11 @@ class UserData with ChangeNotifier {
   }
 
   void setDidShowerToday() {
-    showerMap[_today()] = true;
+    showerMap[today()] = true;
     notifyListeners();
   }
 
-  DateTime _today() {
+  DateTime today() {
     final now = DateTime.now();
     final today = DateTime(now.year, now.month, now.day);
     return today;
@@ -29,7 +29,7 @@ class UserData with ChangeNotifier {
   int numDaysWithoutShower() {
     int MAX_DAYS_WITHOUT_SHOWER = 7;
     for (int i = 0; i < MAX_DAYS_WITHOUT_SHOWER; i++) {
-      if (didShowerOnDay(_today().subtract(Duration(days: i)))) {
+      if (didShowerOnDay(today().subtract(Duration(days: i)))) {
         return i;
       }
     }
