@@ -26,7 +26,7 @@ class _MyAppState extends State<MyApp> {
           child: Column(
             children: [
               AnteaterStatus(),
-              ShoweringPrompt(),
+              ShoweringPrompt(data: data),
               ShowerCalendar(),
             ],
           ),
