@@ -25,7 +25,7 @@ class _MyAppState extends State<MyApp> {
         body: SingleChildScrollView(
           child: Column(
             children: [
-              AnteaterStatus(),
+              AnteaterStatus(data: data),
               ShoweringPrompt(data: data),
               ShowerCalendar(),
             ],
