@@ -10,26 +10,22 @@ class ShoweringPrompt extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: Colors.amber,
-      child: Card(
-        color: Colors.blue,
-        child: SizedBox(
-          width: 300,
-          height: 100,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text('Have you showered today?'),
-              SizedBox(height: 16),
-              ElevatedButton(
-                onPressed: () {
-                  context.read<UserDataCubit>().setDidShowerToday();
-                },
-                child: Text("Yes"),
-              ),
-            ],
-          ),
+    return Card(
+      child: SizedBox(
+        width: 300,
+        height: 100,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text('Have you showered today?'),
+            SizedBox(height: 16),
+            ElevatedButton(
+              onPressed: () {
+                context.read<UserDataCubit>().setDidShowerToday();
+              },
+              child: Text("Yes"),
+            ),
+          ],
         ),
       ),
     );

@@ -23,6 +23,7 @@ class _MyAppState extends State<MyApp> {
       create: (_) => UserDataCubit(),
       child: MaterialApp(
         home: Scaffold(
+          backgroundColor: Colors.blueAccent,
           body: SingleChildScrollView(
             child: BlocBuilder<UserDataCubit, UserData>(
               builder: (context, state) {

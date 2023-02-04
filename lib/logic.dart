@@ -43,13 +43,17 @@ class UserData {
   }
 
   int numContDaysShower() {
-    int CONT_DAYS_WITH_SHOWER = 0;
+    int streak = 0;
     int days = 1;
     while (didShowerOnDay(today().subtract(Duration(days: days)))) {
-      CONT_DAYS_WITH_SHOWER += 1;
+      streak += 1;
       days += 1;
     }
 
-    return CONT_DAYS_WITH_SHOWER;
+    if (didShowerToday()) {
+      streak += 1;
+    }
+
+    return streak;
   }
 }

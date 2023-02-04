@@ -34,29 +34,26 @@ class AnteaterStatus extends StatelessWidget {
       statusImg = "../assets/anteater7.PNG";
     }
 
-    return Container(
-      color: Colors.blue,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          SizedBox(height: 45),
-          Text(
-            "$totShowers TOTAL SHOWERS",
-            style: TextStyle(
-                color: Colors.white, fontWeight: FontWeight.bold, fontSize: 40),
-            textAlign: TextAlign.center,
-          ),
-          Text(
-            "$streakShower day shower streak",
-            style: TextStyle(color: Colors.white, fontSize: 30),
-            textAlign: TextAlign.center,
-          ),
-          SizedBox(height: 70),
-          SizedBox(
-              child: Image.asset(statusImg, fit: BoxFit.fitHeight), height: 350)
-        ],
-      ),
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        SizedBox(height: 45),
+        Text(
+          "$totShowers TOTAL SHOWERS",
+          style: TextStyle(
+              color: Colors.white, fontWeight: FontWeight.bold, fontSize: 40),
+          textAlign: TextAlign.center,
+        ),
+        Text(
+          "$streakShower day shower streak",
+          style: TextStyle(color: Colors.white, fontSize: 30),
+          textAlign: TextAlign.center,
+        ),
+        SizedBox(height: 16),
+        SizedBox(
+            child: Image.asset(statusImg, fit: BoxFit.fitHeight), height: 350)
+      ],
     );
   }
 }
