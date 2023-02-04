@@ -40,7 +40,7 @@ class UserData with ChangeNotifier {
   int numContDaysShower() {
     int CONT_DAYS_WITH_SHOWER = 0;
     int days = 1;
-    while (didShowerOnDay(_today().subtract(Duration(days: days)))) {
+    while (didShowerOnDay(today().subtract(Duration(days: days)))) {
       CONT_DAYS_WITH_SHOWER += 1;
       days += 1;
     }
