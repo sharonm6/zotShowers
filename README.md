@@ -1,5 +1,16 @@
-# zotShowers
+# zotshowers
 
-ZotShowers is an interactive app to keep the CS people off the streets. 
-To improve the health and wellbeing of CS nerd losers and their loved ones, it is important to maintain basic sanitation. Unfortunately, this can be hard for some. We understand this, so we created ZotShowers. 
+A new Flutter project.
 
+## Getting Started
+
+This project is a starting point for a Flutter application.
+
+A few resources to get you started if this is your first Flutter project:
+
+- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
+- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+
+For help getting started with Flutter development, view the
+[online documentation](https://docs.flutter.dev/), which offers tutorials,
+samples, guidance on mobile development, and a full API reference.
