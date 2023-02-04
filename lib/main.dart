@@ -40,23 +40,8 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (_) => UserDataCubit(),
-      child: MaterialApp(
-        home: Scaffold(
-          backgroundColor: Colors.blueAccent,
-          body: SingleChildScrollView(
-            child: BlocBuilder<UserDataCubit, UserData>(
-              builder: (context, state) {
-                return Column(
-                  children: [
-                    AnteaterStatus(data: state),
-                    ShoweringPrompt(data: state),
-                    ShowerCalendar(data: state),
-                  ],
-                );
-              },
-            ),
-          ),
-        ),
+      child: MaterialApp.router(
+        routerConfig: _router,
       ),
     );
   }
