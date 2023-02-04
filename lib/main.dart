@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:zotshowers/anteater_status.dart';
 import 'package:zotshowers/logic.dart';
 import 'package:zotshowers/shower_calendar.dart';
@@ -16,19 +17,24 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  final data = UserData();
-
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
-        body: SingleChildScrollView(
-          child: Column(
-            children: [
-              AnteaterStatus(data: data),
-              ShoweringPrompt(data: data),
-              ShowerCalendar(data:data),
-            ],
+    return BlocProvider(
+      create: (_) => UserDataCubit(),
+      child: MaterialApp(
+        home: Scaffold(
+          body: SingleChildScrollView(
+            child: BlocBuilder<UserDataCubit, UserData>(
+              builder: (context, state) {
+                return Column(
+                  children: [
+                    AnteaterStatus(data: state),
+                    ShoweringPrompt(data: state),
+                    ShowerCalendar(data:state),
+                  ],
+                );
+              },
+            ),
           ),
         ),
       ),

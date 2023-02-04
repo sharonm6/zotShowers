@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 // Displaying a box with button that asks if you showered
 import 'logic.dart';
@@ -23,7 +24,7 @@ class ShoweringPrompt extends StatelessWidget {
               SizedBox(height: 16),
               ElevatedButton(
                 onPressed: () {
-                  data.setDidShowerToday();
+                  context.read<UserDataCubit>().setDidShowerToday();
                 },
                 child: Text("Yes"),
               ),

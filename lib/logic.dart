@@ -1,19 +1,24 @@
-import 'package:flutter/cupertino.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
-class UserData with ChangeNotifier {
-  final Map<DateTime, bool> showerMap = {};
+class UserDataCubit extends Cubit<UserData> {
+  UserDataCubit() : super(UserData({}));
+
+  void setDidShowerToday() {
+    emit(UserData({...state.showerSet, state.today()}));
+  }
+}
+
+class UserData {
+  final Set<DateTime> showerSet;
+
+  UserData(this.showerSet);
 
   bool didShowerToday() {
     return didShowerOnDay(today());
   }
 
   bool didShowerOnDay(DateTime day) {
-    return showerMap[day] ?? false;
-  }
-
-  void setDidShowerToday() {
-    showerMap[today()] = true;
-    notifyListeners();
+    return showerSet.contains(day);
   }
 
   DateTime today() {
@@ -23,7 +28,7 @@ class UserData with ChangeNotifier {
   }
 
   int numTotalShowers() {
-    return showerMap.length;
+    return showerSet.length;
   }
 
   int numDaysWithoutShower() {
