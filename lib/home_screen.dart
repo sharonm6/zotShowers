@@ -21,7 +21,7 @@ class HomeScreen extends StatelessWidget {
                 AnteaterStatus(data: state),
                 ShoweringPrompt(data: state),
                 Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 12),
+                  padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 16),
                   child: ShowerCalendar(data: state),
                 ),
               ],
