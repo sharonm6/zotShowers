@@ -14,6 +14,11 @@ class AnteaterStatus extends StatelessWidget {
     int totShowers = data.numTotalShowers();
     int streakShower = data.numContDaysShower();
     int daysWoShower = data.numDaysWithoutShower();
+    String showerPl = "SHOWERS";
+
+    if (totShowers == 1) {
+      showerPl = "SHOWER";
+    }
 
     String statusImg;
     if (daysWoShower == 0) {
@@ -40,7 +45,7 @@ class AnteaterStatus extends StatelessWidget {
       children: [
         SizedBox(height: 45),
         Text(
-          "$totShowers TOTAL SHOWERS",
+          "$totShowers TOTAL $showerPl",
           style: TextStyle(
               color: Colors.white, fontWeight: FontWeight.bold, fontSize: 40),
           textAlign: TextAlign.center,
