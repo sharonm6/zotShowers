@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'logic.dart';
 
-const MONTH_NAMES = ['JAN', 'FEB', 'MAR', "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"];
+const MONTH_NAMES = ['JANUARY', 'FEBRUARY', 'MARCH', "APRIL", "MAY", "JUNE", "JULY", "AUGUST", "SEPTEMBER", "OCTOBER", "NOVEMBER", "DECEMBER"];
 
 // Shows the showering calendar
 class ShowerCalendar extends StatelessWidget {
