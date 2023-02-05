@@ -1,6 +1,9 @@
 // ignore_for_file: prefer_const_constructors
 
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
+
 import 'logic.dart';
 
 // Shows the dirty or clean anteater image
@@ -14,27 +17,23 @@ class AnteaterStatus extends StatelessWidget {
     int totShowers = data.numTotalShowers();
     int streakShower = data.numContDaysShower();
     int daysWoShower = data.numDaysWithoutShower();
-    String showerPl = "SHOWERS";
-
-    if (totShowers == 1) {
-      showerPl = "SHOWER";
-    }
+    String showerPl = totShowers == 1 ? "Shower" : "Showers";
 
     String statusImg;
     if (daysWoShower == 0) {
-      statusImg = "../assets/anteater0.PNG";
+      statusImg = "../assets/anteater0.png";
     } else if (daysWoShower == 1) {
-      statusImg = "../assets/anteater1.PNG";
+      statusImg = "../assets/anteater1.png";
     } else if (daysWoShower == 2) {
-      statusImg = "../assets/anteater2.PNG";
+      statusImg = "../assets/anteater2.png";
     } else if (daysWoShower == 3) {
-      statusImg = "../assets/anteater3.PNG";
+      statusImg = "../assets/anteater3.png";
     } else if (daysWoShower == 4) {
-      statusImg = "../assets/anteater4.PNG";
+      statusImg = "../assets/anteater4.png";
     } else if (daysWoShower == 5) {
-      statusImg = "../assets/anteater5.PNG";
+      statusImg = "../assets/anteater5.png";
     } else if (daysWoShower == 6) {
-      statusImg = "../assets/anteater6.PNG";
+      statusImg = "../assets/anteater6.png";
     } else {
       statusImg = "../assets/anteater7.PNG";
     }
@@ -45,22 +44,29 @@ class AnteaterStatus extends StatelessWidget {
       children: [
         SizedBox(height: 45),
         Text(
-          "$totShowers TOTAL $showerPl",
+          "$totShowers Total $showerPl",
           style: TextStyle(
-              color: Colors.white, fontWeight: FontWeight.bold, fontSize: 40),
+            fontWeight: FontWeight.bold,
+            fontSize: 40,
+          ),
           textAlign: TextAlign.center,
         ),
         Text(
-          "$streakShower day shower streak",
-          style: TextStyle(color: Colors.white, fontSize: 30),
+          "🚿 $streakShower day shower streak",
+          style: TextStyle(fontSize: 20),
           textAlign: TextAlign.center,
         ),
         SizedBox(height: 16),
         SizedBox(
-            child: Image.asset(statusImg, fit: BoxFit.fitHeight), height: 350),
-            SizedBox(
-              height: 20
-            )
+          height: 350,
+          child: Stack(
+            children: [
+              Image.asset(statusImg, fit: BoxFit.fitHeight),
+              Image.asset("assets/firework.gif"),
+            ],
+          ),
+        ),
+        SizedBox(height: 20)
       ],
     );
   }
