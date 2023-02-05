@@ -9,7 +9,6 @@ class ShopScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.blueAccent,
       body: SingleChildScrollView(
         child: BlocBuilder<UserDataCubit, UserData>(
           builder: (context, state) {
