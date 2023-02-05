@@ -23,12 +23,14 @@ class Shop extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GridView.count(
+      padding: EdgeInsets.symmetric(horizontal: 8, vertical: 8),
       crossAxisCount: 2,
       children: List.generate(
         ALL_ACCESSORIES.length,
         <Widget>(index) {
+          const HEIGHT = 90.0;
           final item = ALL_ACCESSORIES[index];
-          Image img = Image.asset(ALL_ACCESSORIES[index].imagePath, height: 90);
+          Image img = Image.asset(ALL_ACCESSORIES[index].imagePath, height: HEIGHT);
           String buyEquip = "BUY";
           bool enabled = true;
           Color backgroundColor = Colors.blue;
@@ -48,7 +50,12 @@ class Shop extends StatelessWidget {
           return Card(
             child: Column(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
               SizedBox(height: 5),
-              img,
+              Stack(
+                children: [
+                  Image.asset("assets/anteater0.png", height: HEIGHT),
+                  img,
+                ],
+              ),
               const Spacer(),
               Text(ALL_ACCESSORIES[index].name, // indexing starts at 0
                   textAlign: TextAlign.center,

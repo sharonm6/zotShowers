@@ -11,7 +11,7 @@ class UserDataCubit extends Cubit<UserData> {
           showerSet: {},
           accessories: {},
           equipped: [],
-          coins: 10,
+          coins: 50,
         ));
 
   void setDidShowerToday() {
@@ -31,7 +31,7 @@ class UserDataCubit extends Cubit<UserData> {
   }
 
   void equipAccessory(Accessory item) {
-    emit(state.copyWith(equippedSet: [...state.equipped, item]));
+    emit(state.copyWith(equippedSet: [...state.equipped.where((e) => e.height != item.height), item]));
     save();
   }
 
@@ -72,17 +72,28 @@ class Accessory extends Equatable {
   final int price;
   final int height;
 
-  const Accessory(this.name, this.imagePath, this.price, this.height);
+  const Accessory({required this.name, required this.imagePath, required this.price, required this.height});
 
   @override
   List<Object?> get props => [name, price, imagePath, height];
 }
 
+class Type {
+  static const HAT = 10;
+  static const JERSEY = 1;
+  static const HAT_ADDITION = 11;
+  static const HAND_ITEM = 20;
+  static const ONESIE = 0;
+}
+
 const List<Accessory> ALL_ACCESSORIES = [
-  Accessory("Foam Finger", "assets/foam_finger_accessory.png", 2, 2),
-  Accessory("Hat", "assets/hat_accessory.png", 4, 1),
-  Accessory("Jersey", "assets/jersey_accessory.png", 8, 0),
-  Accessory("Pink Ribbon", "assets/pink_ribbon_accessory.png", 1, 2),
+  Accessory(name: "Jersey", imagePath: "assets/jersey_accessory.png", price: 8, height: Type.JERSEY),
+  Accessory(name: "Pink Ribbon", imagePath: "assets/pink_ribbon_accessory.png", price: 1, height: Type.HAT_ADDITION),
+  Accessory(name: "Foam Finger", imagePath: "assets/foam_finger_accessory.png", price: 2, height: Type.HAND_ITEM),
+  Accessory(name: "Hat", imagePath: "assets/hat_accessory.png", price: 4, height: Type.HAT),
+  Accessory(name: "Magic Wand", imagePath: "assets/wand.png", price: 3, height: Type.HAND_ITEM),
+  Accessory(name: "Football", imagePath: "assets/football_accessory.png", price: 2, height: Type.HAND_ITEM),
+  Accessory(name: "Dino Onesie", imagePath: "assets/dino_accessory.png", price: 15, height: Type.ONESIE),
 ];
 
 class UserData extends Equatable {
