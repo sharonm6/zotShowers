@@ -2,7 +2,7 @@ import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class UserDataCubit extends Cubit<UserData> {
-  UserDataCubit() : super(UserData(showerSet: {}, accessories: {}));
+  UserDataCubit() : super(UserData(showerSet: {}, accessories: {}, coins: 0));
 
   void setDidShowerToday() {
     emit(state.copyWith(showerDate: state.today()));
@@ -28,13 +28,16 @@ const List<Accessory> ALL_ACCESSORIES = [
 class UserData extends Equatable {
   final Set<DateTime> showerSet;
   final Set<Accessory> accessories;
+  final int coins;
 
-  UserData({required this.showerSet, required this.accessories});
+  UserData({required this.showerSet, required this.accessories, required this.coins});
 
-  UserData copyWith({DateTime? showerDate, Accessory? accessory}) {
+  UserData copyWith({DateTime? showerDate, Accessory? accessory, int? coins}) {
     return UserData(
       showerSet: showerDate == null ? showerSet : {...showerSet, showerDate},
-      accessories: accessory == null ? accessories : {...accessories, accessory},
+      accessories:
+          accessory == null ? accessories : {...accessories, accessory},
+      coins: coins == null? this.coins : coins
     );
   }
 
