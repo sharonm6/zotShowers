@@ -18,6 +18,7 @@ class HomeScreen extends StatelessWidget {
         child: BlocBuilder<UserDataCubit, UserData>(
           builder: (context, state) {
             return Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
                 AnteaterStatus(data: state),
                 ShoweringPrompt(data: state),
