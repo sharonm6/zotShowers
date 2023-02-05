@@ -12,6 +12,8 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final data = context.read<UserDataCubit>().state;
+
     return Scaffold(
       body: SingleChildScrollView(
         child: BlocBuilder<UserDataCubit, UserData>(
@@ -22,7 +24,8 @@ class HomeScreen extends StatelessWidget {
                 AnteaterStatus(data: state),
                 ShoweringPrompt(data: state),
                 Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
                   child: ShowerCalendar(data: state),
                 ),
               ],
@@ -31,6 +34,17 @@ class HomeScreen extends StatelessWidget {
         ),
       ),
       appBar: AppBar(
+        leading: Row(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            SizedBox(
+              width: 10),
+            Icon(Icons.monetization_on),
+            Text("${data.coins}", style: TextStyle(fontWeight: FontWeight.bold, 
+            fontSize: 18,
+            ))
+          ],
+        ),
         title: const Text(
           "Zot Showers",
           style: TextStyle(fontFamily: "BelloScript", fontSize: 26),
