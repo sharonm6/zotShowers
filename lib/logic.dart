@@ -11,15 +11,19 @@ class UserDataCubit extends Cubit<UserData> {
 
 class Accessory extends Equatable {
   final String name;
+  final String imagePath;
   final int price;
 
-  const Accessory(this.name, this.price);
+  const Accessory(this.name, this.imagePath, this.price);
 
   @override
   List<Object?> get props => [name, price];
 }
 
-List<Accessory> ALL_ACCESSORIES = [Accessory("Jersey", 200), Accessory("Hat", 100)];
+const List<Accessory> ALL_ACCESSORIES = [
+  Accessory("Jersey", "assets/anteater0.png", 200),
+  Accessory("Hat", "assets/anteater1.png", 100),
+];
 
 class UserData extends Equatable {
   final Set<DateTime> showerSet;
