@@ -35,7 +35,7 @@ class AnteaterStatus extends StatelessWidget {
     } else if (daysWoShower == 6) {
       statusImg = "../assets/anteater6.png";
     } else {
-      statusImg = "../assets/anteater7.PNG";
+      statusImg = "../assets/anteater7.png";
     }
 
     return Column(
