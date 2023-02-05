@@ -58,6 +58,11 @@ class AnteaterStatus extends StatelessWidget {
                 alignment: Alignment.bottomCenter,
                 child: Image.asset("assets/anteater0.png", fit: BoxFit.fitHeight, height: 350),
               ),
+              for (final accessory in data.equipped)
+                Align(
+                  alignment: Alignment.bottomCenter,
+                  child: Image.asset(accessory.imagePath, fit: BoxFit.fitHeight, height: 350),
+                ),
               if (statusImg != null)
                 Align(
                   alignment: Alignment.bottomCenter,
@@ -66,11 +71,6 @@ class AnteaterStatus extends StatelessWidget {
                     fit: BoxFit.fitHeight,
                     height: 350,
                   ),
-                ),
-              for (final accessory in data.equipped)
-                Align(
-                  alignment: Alignment.bottomCenter,
-                  child: Image.asset(accessory.imagePath, fit: BoxFit.fitHeight, height: 350),
                 ),
             ],
           ),

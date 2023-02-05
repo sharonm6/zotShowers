@@ -88,6 +88,7 @@ class ShowerCalendar extends StatelessWidget {
         ),
         const SizedBox(height: 8),
         GridView.count(
+          padding: EdgeInsets.zero,
           crossAxisCount: 7,
           shrinkWrap: true,
           physics: const NeverScrollableScrollPhysics(),

@@ -1,5 +1,3 @@
-// ignore_for_file: prefer_const_constructors
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -14,6 +12,7 @@ class Shop extends StatelessWidget {
   void handleClick(BuildContext context, int idx) {
     if (!data.accessories.contains(ALL_ACCESSORIES[idx])) {
       context.read<UserDataCubit>().addAccessory(ALL_ACCESSORIES[idx]);
+      context.read<UserDataCubit>().equipAccessory(ALL_ACCESSORIES[idx]);
     } else if (!data.equipped.contains(ALL_ACCESSORIES[idx])) {
       context.read<UserDataCubit>().equipAccessory(ALL_ACCESSORIES[idx]);
     } else {
@@ -28,8 +27,7 @@ class Shop extends StatelessWidget {
       children: List.generate(
         ALL_ACCESSORIES.length,
         <Widget>(index) {
-          Image img;
-          img = Image.asset(ALL_ACCESSORIES[index].imagePath, height: 100);
+          Image img = Image.asset(ALL_ACCESSORIES[index].imagePath, height: 100);
           String buyEquip = "BUY";
           Color backgroundColor = Colors.blue;
 
@@ -52,10 +50,11 @@ class Shop extends StatelessWidget {
                   textAlign: TextAlign.center,
                   style: TextStyle(fontSize: 15)),
               SizedBox(height: 5),
-              Text(data.accessories.contains(ALL_ACCESSORIES[index]) ? "Owned" : "🪙 ${ALL_ACCESSORIES[index].price}",
-                  // indexing starts at 0
-                  textAlign: TextAlign.center,
-                  style: TextStyle(fontSize: 15)),
+              Text(
+                data.accessories.contains(ALL_ACCESSORIES[index]) ? "Owned" : "🪙 ${ALL_ACCESSORIES[index].price}",
+                textAlign: TextAlign.center,
+                style: TextStyle(fontSize: 15),
+              ),
               SizedBox(height: 5),
               SizedBox(
                 width: double.infinity,
