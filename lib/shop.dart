@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'logic.dart';
 
 // Shows the dirty or clean anteater image
@@ -8,6 +9,18 @@ class Shop extends StatelessWidget {
   final UserData data;
 
   const Shop({Key? key, required this.data}) : super(key: key);
+
+  handleClick(BuildContext context, int idx) {
+    if (!data.accessories.contains(ALL_ACCESSORIES[idx])) {
+      context.read<UserDataCubit>().addAccessory(ALL_ACCESSORIES[idx]);
+    } else {
+      if (!data.equipped.contains(ALL_ACCESSORIES[idx])) {
+        context.read<UserDataCubit>().equipAccessory(ALL_ACCESSORIES[idx]);
+      } else {
+        context.read<UserDataCubit>().unequipAccessory(ALL_ACCESSORIES[idx]);
+      }
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -18,6 +31,17 @@ class Shop extends StatelessWidget {
         <Widget>(index) {
           Image img;
           img = Image.asset(ALL_ACCESSORIES[index].imagePath, height: 100);
+          String buyEquip = "BUY";
+
+          if (data.accessories.contains(ALL_ACCESSORIES[index])) {
+            buyEquip = "EQUIP";
+            if (data.equipped.contains(ALL_ACCESSORIES[index])) {
+              buyEquip = "UNEQUIP";
+            } else {
+              buyEquip = "EQUIP";
+            }
+          }
+
           return Card(
             child: Stack(
               children: [
@@ -45,12 +69,12 @@ class Shop extends StatelessWidget {
                           backgroundColor: MaterialStatePropertyAll<Color>(
                               Colors.blueAccent),
                         ),
-                        onPressed: () {},
-                        child: Text("BUY", // indexing starts at 0
+                        onPressed: () => handleClick(context, index),
+                        child: Text(buyEquip, // indexing starts at 0
                             textAlign: TextAlign.center,
                             style: TextStyle(fontSize: 10)),
                       ),
-                      height: 15,
+                      height: 17,
                     ),
                   ]),
                 ),
