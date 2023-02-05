@@ -9,42 +9,57 @@ class ShoweringPrompt extends StatelessWidget {
 
   const ShoweringPrompt({Key? key, required this.data}) : super(key: key);
 
-  @override
-  Widget build(BuildContext context) {
+  Widget buildContent(BuildContext context) {
     if (data.didShowerToday()) {
-      return Text(
-        "Foo showered today! \n Your fellow anteaters thank you!",
-        style: TextStyle(fontSize: 25),
-        textAlign: TextAlign.center,
-      );
-    }
-    return Container(
-      color: Colors.blue,
-      padding: EdgeInsets.symmetric(vertical: 20),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
+      return Column(
+        children: const [
           Text(
-            'Have you showered today?',
-            style: TextStyle(
-              fontSize: 16,
-              color: Colors.white,
-            ),
+            "You showered today!",
+            style: TextStyle(fontSize: 20, color: Colors.white),
+            textAlign: TextAlign.center,
           ),
-          SizedBox(height: 16),
-          ElevatedButton(
-            style: ElevatedButton.styleFrom(
-              backgroundColor: Color(0xffffbf00),
-              foregroundColor: Colors.black,
-              padding: EdgeInsets.symmetric(horizontal: 24, vertical: 16),
-            ),
-            onPressed: () {
-              context.read<UserDataCubit>().setDidShowerToday();
-            },
-            child: Text("Yes"),
+          SizedBox(height: 4),
+          Text(
+            "Your fellow anteaters thank you!",
+            style: TextStyle(fontSize: 20, color: Colors.white),
+            textAlign: TextAlign.center,
           ),
         ],
-      ),
+      );
+    }
+
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        const Text(
+          'Have you showered today?',
+          style: TextStyle(
+            fontSize: 16,
+            color: Colors.white,
+          ),
+        ),
+        const SizedBox(height: 16),
+        ElevatedButton(
+          style: ElevatedButton.styleFrom(
+            backgroundColor: const Color(0xffffbf00),
+            foregroundColor: Colors.black,
+            padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
+          ),
+          onPressed: () {
+            context.read<UserDataCubit>().setDidShowerToday();
+          },
+          child: const Text("Yes"),
+        ),
+      ],
+    );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      color: Colors.blue,
+      padding: const EdgeInsets.symmetric(vertical: 20),
+      child: buildContent(context),
     );
   }
 }
