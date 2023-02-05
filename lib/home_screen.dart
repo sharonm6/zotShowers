@@ -8,7 +8,6 @@ import 'package:zotshowers/showering_prompt.dart';
 import 'anteater_status.dart';
 
 class HomeScreen extends StatelessWidget {
-  
   const HomeScreen({Key? key}) : super(key: key);
 
   @override
@@ -23,7 +22,7 @@ class HomeScreen extends StatelessWidget {
                 AnteaterStatus(data: state),
                 ShoweringPrompt(data: state),
                 Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 16),
+                  padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
                   child: ShowerCalendar(data: state),
                 ),
               ],
@@ -31,18 +30,21 @@ class HomeScreen extends StatelessWidget {
           },
         ),
       ),
-
       appBar: AppBar(
-        title: const Text ("Zot Showers"),
-        actions: <Widget> [
+        title: const Text(
+          "Zot Showers",
+          style: TextStyle(fontFamily: "BelloScript", fontSize: 26),
+        ),
+        actions: <Widget>[
           IconButton(
-            icon: Icon(Icons.shopping_cart),
+            icon: const Icon(Icons.shopping_cart),
             tooltip: "Go to the next page",
             onPressed: () {
               context.go("/shop");
-            }
+            },
           )
-        ]),
+        ],
+      ),
     );
   }
 }
