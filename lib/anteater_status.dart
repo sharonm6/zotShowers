@@ -42,7 +42,40 @@ class AnteaterStatus extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.center,
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        SizedBox(height: 45),
+        SizedBox(height: 64),
+        SizedBox(
+          height: 500,
+          child: Stack(
+            children: [
+              Align(
+                alignment: Alignment.topCenter,
+                child: Padding(
+                  padding: const EdgeInsets.only(right: 16),
+                  child: Image.asset("assets/zot_showers_logo_non_circle.png", height: 250),
+                ),
+              ),
+              Align(
+                alignment: Alignment.bottomCenter,
+                child: Image.asset("assets/anteater0.png", fit: BoxFit.fitHeight, height: 350),
+              ),
+              if (statusImg != null)
+                Align(
+                  alignment: Alignment.bottomCenter,
+                  child: Image.asset(
+                    statusImg,
+                    fit: BoxFit.fitHeight,
+                    height: 350,
+                  ),
+                ),
+              for (final accessory in data.equipped)
+                Align(
+                  alignment: Alignment.bottomCenter,
+                  child: Image.asset(accessory.imagePath, fit: BoxFit.fitHeight, height: 350),
+                ),
+            ],
+          ),
+        ),
+        SizedBox(height: 16),
         Text(
           "$totShowers Total $showerPl",
           style: TextStyle(
@@ -57,19 +90,6 @@ class AnteaterStatus extends StatelessWidget {
           textAlign: TextAlign.center,
         ),
         SizedBox(height: 16),
-        SizedBox(
-          height: 350,
-          child: Stack(
-            children: [
-              Image.asset("assets/anteater0.png", fit: BoxFit.fitHeight),
-              if (statusImg != null)
-                Image.asset(statusImg, fit: BoxFit.fitHeight),
-              for (final accessory in data.accessories)
-                Image.asset(accessory.imagePath, fit: BoxFit.fitHeight),
-            ],
-          ),
-        ),
-        SizedBox(height: 20)
       ],
     );
   }

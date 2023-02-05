@@ -2,11 +2,13 @@ import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class UserDataCubit extends Cubit<UserData> {
-  UserDataCubit()
-      : super(UserData(showerSet: {}, accessories: {}, equipped: {}, coins: 0));
+  UserDataCubit() : super(UserData(showerSet: {}, accessories: {}, equipped: {}, coins: 0));
 
   void setDidShowerToday() {
-    emit(state.copyWith(showerDate: {...state.showerSet, state.today()}));
+    emit(state.copyWith(
+      showerDate: {...state.showerSet, state.today()},
+      coins: state.coins + 1 + state.numContDaysShower(),
+    ));
   }
 
   void addAccessory(item) {
@@ -18,9 +20,7 @@ class UserDataCubit extends Cubit<UserData> {
   }
 
   void unequipAccessory(item) {
-    emit(state.copyWith(
-        equippedSet:
-            state.equipped.where((element) => element != item).toSet()));
+    emit(state.copyWith(equippedSet: state.equipped.where((element) => element != item).toSet()));
   }
 }
 
@@ -48,22 +48,20 @@ class UserData extends Equatable {
   final Set<Accessory> equipped;
   final int coins;
 
-  UserData(
-      {required this.showerSet,
-      required this.accessories,
-      required this.equipped,
-      required this.coins});
+  UserData({required this.showerSet, required this.accessories, required this.equipped, required this.coins});
 
-  UserData copyWith(
-      {Set<DateTime>? showerDate,
-      Set<Accessory>? accessorySet,
-      Set<Accessory>? equippedSet,
-      int? coins}) {
+  UserData copyWith({
+    Set<DateTime>? showerDate,
+    Set<Accessory>? accessorySet,
+    Set<Accessory>? equippedSet,
+    int? coins,
+  }) {
     return UserData(
-        showerSet: showerDate == null ? showerSet : showerDate,
-        accessories: accessorySet == null ? accessories : accessorySet,
-        equipped: equippedSet == null ? equipped : equippedSet,
-        coins: coins == null ? this.coins : coins);
+      showerSet: showerDate ?? showerSet,
+      accessories: accessorySet ?? accessories,
+      equipped: equippedSet ?? equipped,
+      coins: coins ?? this.coins,
+    );
   }
 
   bool didShowerToday() {
@@ -111,5 +109,5 @@ class UserData extends Equatable {
   }
 
   @override
-  List<Object?> get props => [accessories, showerSet, equipped];
+  List<Object?> get props => [accessories, showerSet, equipped, coins];
 }

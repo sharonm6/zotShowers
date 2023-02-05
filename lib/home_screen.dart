@@ -15,6 +15,8 @@ class HomeScreen extends StatelessWidget {
     final data = context.watch<UserDataCubit>().state;
 
     return Scaffold(
+      extendBodyBehindAppBar: true,
+      backgroundColor: Colors.white,
       body: SingleChildScrollView(
         child: BlocBuilder<UserDataCubit, UserData>(
           builder: (context, state) {
@@ -33,11 +35,13 @@ class HomeScreen extends StatelessWidget {
         ),
       ),
       appBar: AppBar(
+        backgroundColor: Colors.transparent,
+        elevation: 0,
         leading: Row(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             const SizedBox(width: 10),
-            const Icon(Icons.monetization_on, color: Colors.yellow, size: 24),
+            const Icon(Icons.monetization_on, color: Colors.black, size: 24),
             const SizedBox(width: 2),
             Text(
               "${data.coins}",
@@ -45,18 +49,14 @@ class HomeScreen extends StatelessWidget {
                 fontWeight: FontWeight.bold,
                 fontSize: 20,
                 height: 1.4,
-                color: Colors.yellow,
+                color: Colors.black,
               ),
             )
           ],
         ),
-        title: const Text(
-          "Zot Showers",
-          style: TextStyle(fontFamily: "BelloScript", fontSize: 26),
-        ),
         actions: <Widget>[
           IconButton(
-            icon: const Icon(Icons.shopping_cart),
+            icon: const Icon(Icons.shopping_cart, color: Colors.black),
             tooltip: "Go to the next page",
             onPressed: () {
               context.go("/shop");
