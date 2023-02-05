@@ -33,7 +33,6 @@ class ShowerCalendar extends StatelessWidget {
       ));
     });
     final List<Widget> dayOffset = List.generate(firstDayOfCurrMonth().weekday % 7, (index) {
-      // hard-coded for February
       return const Center(
         child: Align(
           alignment: Alignment.topLeft,
@@ -90,7 +89,6 @@ class ShowerCalendar extends StatelessWidget {
             style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
           ),
         ),
-        // const SizedBox(height: 8),
         Text(
           MONTH_NAMES[firstDayOfCurrMonth().month - 1],
           style: const TextStyle(fontSize: 12),
@@ -101,7 +99,7 @@ class ShowerCalendar extends StatelessWidget {
           crossAxisCount: 7,
           shrinkWrap: true,
           physics: const NeverScrollableScrollPhysics(),
-          // Generate 28 widgets that display the corresponding anteater from that day
+          // Generate # of days in month widgets that display the corresponding anteater from each day
           children: (daysList + dayOffset + calendarGridCells)
               .map((w) => Container(
                     decoration: BoxDecoration(
