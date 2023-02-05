@@ -38,28 +38,34 @@ class ShowerCalendar extends StatelessWidget {
       <Widget>(index) {
         final firstDayOfMonth = DateTime(2023, 2, 1);
         Image img;
+        Color background;
         // add index to first day
         if (data.today().isBefore(firstDayOfMonth.add(Duration(days: index)))) {
-          img = Image.asset("assets/empty.png",
-              height: 200); // empty if past today, no data would exist
-        } else if (data
-            .didShowerOnDay(firstDayOfMonth.add(Duration(days: index)))) {
+          img = Image.asset("assets/empty.png", height: 200); // empty if past today, no data would exist
+          background = Colors.transparent;
+        } else if (data.didShowerOnDay(firstDayOfMonth.add(Duration(days: index)))) {
           img = Image.asset("assets/anteater0.png", height: 200);
+          background = Colors.green.withOpacity(0.2);
         } else {
           img = Image.asset("assets/anteater6.png", height: 200);
+          background = Colors.red.withOpacity(0.2);
         }
-        return Stack(
-          children: [
-            Positioned(
-              left: 4,
-              top: 4,
-              child: Text(
-                (index + 1).toString(), // indexing starts at 0
-                textAlign: TextAlign.left,
+
+        return Container(
+          color: background,
+          child: Stack(
+            children: [
+              Positioned(
+                left: 4,
+                top: 4,
+                child: Text(
+                  (index + 1).toString(), // indexing starts at 0
+                  textAlign: TextAlign.left,
+                ),
               ),
-            ),
-            img,
-          ],
+              img,
+            ],
+          ),
         );
       },
     );
