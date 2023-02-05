@@ -42,7 +42,7 @@ class AnteaterStatus extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.center,
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        SizedBox(height: 64),
+        SizedBox(height: 32),
         SizedBox(
           height: 500,
           child: Stack(

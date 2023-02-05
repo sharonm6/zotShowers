@@ -31,10 +31,12 @@ class ShoweringPrompt extends StatelessWidget {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
+        const SizedBox(height: 8),
         const Text(
           'Have you showered today?',
           style: TextStyle(
-            fontSize: 16,
+            fontSize: 20,
+            fontWeight: FontWeight.bold,
             color: Colors.white,
           ),
         ),
@@ -43,13 +45,14 @@ class ShoweringPrompt extends StatelessWidget {
           style: ElevatedButton.styleFrom(
             backgroundColor: const Color(0xffffbf00),
             foregroundColor: Colors.black,
-            padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
+            padding: const EdgeInsets.symmetric(horizontal: 48, vertical: 16),
           ),
           onPressed: () {
             context.read<UserDataCubit>().setDidShowerToday();
           },
-          child: const Text("Yes"),
+          child: const Text("Yes", style: TextStyle(fontSize: 18),),
         ),
+        const SizedBox(height: 8),
       ],
     );
   }

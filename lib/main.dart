@@ -39,7 +39,7 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (_) => UserDataCubit(),
+      create: (_) => UserDataCubit()..load(),
       child: MaterialApp.router(
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
