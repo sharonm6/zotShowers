@@ -41,6 +41,9 @@ class _MyAppState extends State<MyApp> {
     return BlocProvider(
       create: (_) => UserDataCubit(),
       child: MaterialApp.router(
+        theme: ThemeData(
+          fontFamily: "Soleil",
+        ),
         routerConfig: _router,
       ),
     );

@@ -43,14 +43,15 @@ class ShowerCalendar extends StatelessWidget {
         if (data.today().isBefore(firstDayOfMonth.add(Duration(days: index)))) {
           img = Image.asset("assets/empty.PNG", height: 200); // empty if past today, no data would exist
         } else if (data.didShowerOnDay(firstDayOfMonth.add(Duration(days: index)))) {
-          img = Image.asset("assets/anteater0.PNG", height: 200);
+          img = Image.asset("assets/anteater0.png", height: 200);
         } else {
-          img = Image.asset("assets/anteater6.PNG", height: 200);
+          img = Image.asset("assets/anteater6.png", height: 200);
         }
         return Stack(
           children: [
-            Align(
-              alignment: Alignment.topLeft,
+            Positioned(
+              left: 4,
+              top: 4,
               child: Text(
                 (index + 1).toString(), // indexing starts at 0
                 textAlign: TextAlign.left,

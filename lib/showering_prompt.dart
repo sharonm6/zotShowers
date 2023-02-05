@@ -6,18 +6,17 @@ import 'logic.dart';
 
 class ShoweringPrompt extends StatelessWidget {
   final UserData data;
+
   const ShoweringPrompt({Key? key, required this.data}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     if (data.didShowerToday()) {
       return Text(
-      "Foo showered today! \n Your fellow anteaters thank you!", 
-      style: TextStyle(color: Colors.white,
-      fontSize: 25 ),
-      textAlign: TextAlign.center,
+        "Foo showered today! \n Your fellow anteaters thank you!",
+        style: TextStyle(color: Colors.white, fontSize: 25),
+        textAlign: TextAlign.center,
       );
-
     }
     return Card(
       child: SizedBox(

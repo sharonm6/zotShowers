@@ -39,7 +39,7 @@ class AnteaterStatus extends StatelessWidget {
     }
 
     return Column(
-      crossAxisAlignment: CrossAxisAlignment.stretch,
+      crossAxisAlignment: CrossAxisAlignment.center,
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         SizedBox(height: 45),
@@ -62,7 +62,6 @@ class AnteaterStatus extends StatelessWidget {
           child: Stack(
             children: [
               Image.asset(statusImg, fit: BoxFit.fitHeight),
-              Image.asset("assets/firework.gif"),
             ],
           ),
         ),
