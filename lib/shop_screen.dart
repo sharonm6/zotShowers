@@ -9,16 +9,10 @@ class ShopScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SingleChildScrollView(
-        child: BlocBuilder<UserDataCubit, UserData>(
-          builder: (context, state) {
-            return Column(
-              children: [
-                Shop(data: state),
-              ],
-            );
-          },
-        ),
+      body: BlocBuilder<UserDataCubit, UserData>(
+        builder: (context, state) {
+          return Shop(data: state);
+        },
       ),
     );
   }

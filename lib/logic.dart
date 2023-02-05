@@ -21,8 +21,10 @@ class Accessory extends Equatable {
 }
 
 const List<Accessory> ALL_ACCESSORIES = [
-  Accessory("Jersey", "assets/anteater0.png", 200),
-  Accessory("Hat", "assets/anteater1.png", 100),
+  Accessory("Foam Finger", "assets/foam_finger_accessory.png", 200),
+  Accessory("Hat", "assets/hat_accessory.png", 300),
+  Accessory("Jersey", "assets/jersey_accessory.png", 400),
+  Accessory("Pink Ribbon", "assets/pink_ribbon_accessory.png", 100),
 ];
 
 class UserData extends Equatable {
@@ -30,15 +32,17 @@ class UserData extends Equatable {
   final Set<Accessory> accessories;
   final int coins;
 
-  UserData({required this.showerSet, required this.accessories, required this.coins});
+  UserData(
+      {required this.showerSet,
+      required this.accessories,
+      required this.coins});
 
   UserData copyWith({DateTime? showerDate, Accessory? accessory, int? coins}) {
     return UserData(
-      showerSet: showerDate == null ? showerSet : {...showerSet, showerDate},
-      accessories:
-          accessory == null ? accessories : {...accessories, accessory},
-      coins: coins == null? this.coins : coins
-    );
+        showerSet: showerDate == null ? showerSet : {...showerSet, showerDate},
+        accessories:
+            accessory == null ? accessories : {...accessories, accessory},
+        coins: coins == null ? this.coins : coins);
   }
 
   bool didShowerToday() {

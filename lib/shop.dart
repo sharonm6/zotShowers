@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:flutter/material.dart';
 import 'logic.dart';
 
@@ -9,60 +11,54 @@ class Shop extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.stretch,
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        SizedBox(
-          height: 800,
-          child: GridView.count(
-            crossAxisCount: 4,
-            children: List.generate(
-              2,
-              <Widget>(index) {
-                Image img;
-                img =
-                    Image.asset(ALL_ACCESSORIES[index].imagePath, height: 200);
-                return Card(
-                  child: Stack(
-                    children: [
-                      Align(
-                        alignment: Alignment.center,
-                        child: Column(children: [
-                          img,
-                          SizedBox(height: 20),
-                          Text(
-                              "${ALL_ACCESSORIES[index].name}", // indexing starts at 0
-                              textAlign: TextAlign.center,
-                              style: TextStyle(fontSize: 20)),
-                          SizedBox(height: 5),
-                          Text(
-                              "🪙 ${ALL_ACCESSORIES[index].price}", // indexing starts at 0
-                              textAlign: TextAlign.center,
-                              style: TextStyle(fontSize: 20)),
-                          SizedBox(height: 10),
-                          TextButton(
-                            style: ButtonStyle(
-                              foregroundColor: MaterialStateProperty.all<Color>(
-                                  Colors.white),
-                              backgroundColor: MaterialStatePropertyAll<Color>(
-                                  Colors.blueAccent),
-                            ),
-                            onPressed: () {},
-                            child: Text("BUY", // indexing starts at 0
-                                textAlign: TextAlign.center,
-                                style: TextStyle(fontSize: 15)),
-                          ),
-                        ]),
-                      )
-                    ],
-                  ),
-                );
-              },
+    return GridView.count(
+      crossAxisCount: 2,
+      children: List.generate(
+        ALL_ACCESSORIES.length,
+        <Widget>(index) {
+          Image img;
+          img = Image.asset(ALL_ACCESSORIES[index].imagePath, height: 100);
+          return Card(
+            child: Stack(
+              children: [
+                Align(
+                  alignment: Alignment.center,
+                  child: Column(children: [
+                    SizedBox(height: 7),
+                    img,
+                    SizedBox(height: 5),
+                    Text(
+                        "${ALL_ACCESSORIES[index].name}", // indexing starts at 0
+                        textAlign: TextAlign.center,
+                        style: TextStyle(fontSize: 15)),
+                    SizedBox(height: 5),
+                    Text(
+                        "🪙 ${ALL_ACCESSORIES[index].price}", // indexing starts at 0
+                        textAlign: TextAlign.center,
+                        style: TextStyle(fontSize: 15)),
+                    SizedBox(height: 5),
+                    SizedBox(
+                      child: TextButton(
+                        style: ButtonStyle(
+                          foregroundColor:
+                              MaterialStateProperty.all<Color>(Colors.white),
+                          backgroundColor: MaterialStatePropertyAll<Color>(
+                              Colors.blueAccent),
+                        ),
+                        onPressed: () {},
+                        child: Text("BUY", // indexing starts at 0
+                            textAlign: TextAlign.center,
+                            style: TextStyle(fontSize: 10)),
+                      ),
+                      height: 15,
+                    ),
+                  ]),
+                ),
+              ],
             ),
-          ),
-        ),
-      ],
+          );
+        },
+      ),
     );
   }
 }

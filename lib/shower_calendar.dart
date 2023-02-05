@@ -41,8 +41,10 @@ class ShowerCalendar extends StatelessWidget {
         Image img;
         // add index to first day
         if (data.today().isBefore(firstDayOfMonth.add(Duration(days: index)))) {
-          img = Image.asset("assets/empty.png", height: 200); // empty if past today, no data would exist
-        } else if (data.didShowerOnDay(firstDayOfMonth.add(Duration(days: index)))) {
+          img = Image.asset("assets/empty.png",
+              height: 200); // empty if past today, no data would exist
+        } else if (data
+            .didShowerOnDay(firstDayOfMonth.add(Duration(days: index)))) {
           img = Image.asset("assets/anteater0.png", height: 200);
         } else {
           img = Image.asset("assets/anteater6.png", height: 200);
