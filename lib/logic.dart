@@ -87,13 +87,19 @@ class Type {
 }
 
 const List<Accessory> ALL_ACCESSORIES = [
-  Accessory(name: "Jersey", imagePath: "assets/jersey_accessory.png", price: 8, height: Type.JERSEY),
+  Accessory(name: "Blue Gold Jersey", imagePath: "assets/bg_jersey_accessory.png", price: 8, height: Type.JERSEY),
+  Accessory(name: "White Blue Jersey", imagePath: "assets/wb_jersey_accessory.png", price: 8, height: Type.JERSEY),
   Accessory(name: "Pink Ribbon", imagePath: "assets/pink_ribbon_accessory.png", price: 1, height: Type.HAT_ADDITION),
   Accessory(name: "Foam Finger", imagePath: "assets/foam_finger_accessory.png", price: 2, height: Type.HAND_ITEM),
   Accessory(name: "Hat", imagePath: "assets/hat_accessory.png", price: 4, height: Type.HAT),
+  Accessory(name: "Fedora", imagePath: "assets/fedora_accessory.png", price: 4, height: Type.HAT),
+  Accessory(name: "Crown", imagePath: "assets/crown_accessory.png", price: 4, height: Type.HAT),
   Accessory(name: "Magic Wand", imagePath: "assets/wand.png", price: 3, height: Type.HAND_ITEM),
   Accessory(name: "Football", imagePath: "assets/football_accessory.png", price: 2, height: Type.HAND_ITEM),
-  Accessory(name: "Dino Onesie", imagePath: "assets/dino_accessory.png", price: 15, height: Type.ONESIE),
+  Accessory(name: "Blue Dino Onesie", imagePath: "assets/dino_accessory.png", price: 15, height: Type.ONESIE),
+  Accessory(name: "Green Dino Onesie", imagePath: "assets/green_dino_accessory.png", price: 15, height: Type.ONESIE),
+  Accessory(name: "Purple Dino Onesie", imagePath: "assets/purple_dino_accessory.png", price: 15, height: Type.ONESIE),
+  Accessory(name: "Sully Onesie", imagePath: "assets/sully_accessory.png", price: 20, height: Type.ONESIE),
 ];
 
 class UserData extends Equatable {
