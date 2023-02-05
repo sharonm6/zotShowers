@@ -19,23 +19,23 @@ class AnteaterStatus extends StatelessWidget {
     int daysWoShower = data.numDaysWithoutShower();
     String showerPl = totShowers == 1 ? "Shower" : "Showers";
 
-    String statusImg;
+    String? statusImg;
     if (daysWoShower == 0) {
-      statusImg = "assets/anteater0.png";
+      statusImg = null;
     } else if (daysWoShower == 1) {
-      statusImg = "assets/anteater1.png";
+      statusImg = "assets/stink1.png";
     } else if (daysWoShower == 2) {
-      statusImg = "assets/anteater2.png";
+      statusImg = "assets/stink2.png";
     } else if (daysWoShower == 3) {
-      statusImg = "assets/anteater3.png";
+      statusImg = "assets/stink3.png";
     } else if (daysWoShower == 4) {
-      statusImg = "assets/anteater4.png";
+      statusImg = "assets/stink4.png";
     } else if (daysWoShower == 5) {
-      statusImg = "assets/anteater5.png";
+      statusImg = "assets/stink5.png";
     } else if (daysWoShower == 6) {
-      statusImg = "assets/anteater6.png";
+      statusImg = "assets/stink6.png";
     } else {
-      statusImg = "assets/anteater7.png";
+      statusImg = "assets/stink7.png";
     }
 
     return Column(
@@ -61,7 +61,11 @@ class AnteaterStatus extends StatelessWidget {
           height: 350,
           child: Stack(
             children: [
-              Image.asset(statusImg, fit: BoxFit.fitHeight),
+              Image.asset("assets/anteater0.png", fit: BoxFit.fitHeight),
+              if (statusImg != null)
+                Image.asset(statusImg, fit: BoxFit.fitHeight),
+              for (final accessory in data.accessories)
+                Image.asset(accessory.imagePath, fit: BoxFit.fitHeight),
             ],
           ),
         ),

@@ -12,7 +12,7 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final data = context.read<UserDataCubit>().state;
+    final data = context.watch<UserDataCubit>().state;
 
     return Scaffold(
       body: SingleChildScrollView(
@@ -24,8 +24,7 @@ class HomeScreen extends StatelessWidget {
                 AnteaterStatus(data: state),
                 ShoweringPrompt(data: state),
                 Padding(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
+                  padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
                   child: ShowerCalendar(data: state),
                 ),
               ],
@@ -37,12 +36,18 @@ class HomeScreen extends StatelessWidget {
         leading: Row(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            SizedBox(
-              width: 10),
-            Icon(Icons.monetization_on),
-            Text("${data.coins}", style: TextStyle(fontWeight: FontWeight.bold, 
-            fontSize: 18,
-            ))
+            const SizedBox(width: 10),
+            const Icon(Icons.monetization_on, color: Colors.yellow, size: 24),
+            const SizedBox(width: 2),
+            Text(
+              "${data.coins}",
+              style: const TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 20,
+                height: 1.4,
+                color: Colors.yellow,
+              ),
+            )
           ],
         ),
         title: const Text(
