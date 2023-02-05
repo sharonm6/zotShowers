@@ -2,11 +2,23 @@ import 'package:flutter/material.dart';
 
 import 'logic.dart';
 
+const MONTH_NAMES = ['JAN', 'FEB', 'MAR', "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"];
+
 // Shows the showering calendar
 class ShowerCalendar extends StatelessWidget {
   final UserData data;
 
   const ShowerCalendar({Key? key, required this.data}) : super(key: key);
+
+  int daysInCurrentMonth() {
+    final start = firstDayOfCurrMonth();
+    return DateTimeRange(start: start, end: DateTime(start.year, start.month + 1)).duration.inDays;
+  }
+
+  DateTime firstDayOfCurrMonth() {
+    final now = DateTime.now();
+    return DateTime(now.year, now.month);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +32,7 @@ class ShowerCalendar extends StatelessWidget {
         textAlign: TextAlign.center,
       ));
     });
-    final List<Widget> dayOffset = List.generate(3, (index) {
+    final List<Widget> dayOffset = List.generate(firstDayOfCurrMonth().weekday % 7, (index) {
       // hard-coded for February
       return const Center(
         child: Align(
@@ -33,42 +45,39 @@ class ShowerCalendar extends StatelessWidget {
       );
     });
 
-    final List<Widget> calendarGridCells = List.generate(
-      28,
-      <Widget>(index) {
-        final firstDayOfMonth = DateTime(2023, 2, 1);
-        Image img;
-        Color background;
-        // add index to first day
-        if (data.today().isBefore(firstDayOfMonth.add(Duration(days: index)))) {
-          img = Image.asset("assets/empty.png", height: 200); // empty if past today, no data would exist
-          background = Colors.transparent;
-        } else if (data.didShowerOnDay(firstDayOfMonth.add(Duration(days: index)))) {
-          img = Image.asset("assets/anteater0.png", height: 200);
-          background = Colors.green.withOpacity(0.2);
-        } else {
-          img = Image.asset("assets/anteater6.png", height: 200);
-          background = Colors.red.withOpacity(0.2);
-        }
+    final List<Widget> calendarGridCells = List.generate(daysInCurrentMonth(), <Widget>(index) {
+      final firstDayOfMonth = firstDayOfCurrMonth();
+      Image img;
+      Color background;
+      // add index to first day
+      if (data.today().isBefore(firstDayOfMonth.add(Duration(days: index)))) {
+        img = Image.asset("assets/empty.png", height: 200); // empty if past today, no data would exist
+        background = Colors.transparent;
+      } else if (data.didShowerOnDay(firstDayOfMonth.add(Duration(days: index)))) {
+        img = Image.asset("assets/anteater0.png", height: 200);
+        background = Colors.green.withOpacity(0.2);
+      } else {
+        img = Image.asset("assets/anteater6.png", height: 200);
+        background = Colors.red.withOpacity(0.2);
+      }
 
-        return Container(
-          color: background,
-          child: Stack(
-            children: [
-              Positioned(
-                left: 4,
-                top: 4,
-                child: Text(
-                  (index + 1).toString(), // indexing starts at 0
-                  textAlign: TextAlign.left,
-                ),
+      return Container(
+        color: background,
+        child: Stack(
+          children: [
+            Positioned(
+              left: 4,
+              top: 4,
+              child: Text(
+                (index + 1).toString(), // indexing starts at 0
+                textAlign: TextAlign.left,
               ),
-              img,
-            ],
-          ),
-        );
-      },
-    );
+            ),
+            img,
+          ],
+        ),
+      );
+    });
 
     return Column(
       mainAxisSize: MainAxisSize.min,
@@ -82,9 +91,9 @@ class ShowerCalendar extends StatelessWidget {
           ),
         ),
         // const SizedBox(height: 8),
-        const Text(
-          "FEB",
-          style: TextStyle(fontSize: 12),
+        Text(
+          MONTH_NAMES[firstDayOfCurrMonth().month - 1],
+          style: const TextStyle(fontSize: 12),
         ),
         const SizedBox(height: 8),
         GridView.count(
