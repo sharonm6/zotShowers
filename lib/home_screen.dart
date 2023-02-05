@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 import 'package:zotshowers/logic.dart';
 import 'package:zotshowers/shower_calendar.dart';
 import 'package:zotshowers/showering_prompt.dart';
@@ -7,6 +8,7 @@ import 'package:zotshowers/showering_prompt.dart';
 import 'anteater_status.dart';
 
 class HomeScreen extends StatelessWidget {
+  
   const HomeScreen({Key? key}) : super(key: key);
 
   @override
@@ -28,6 +30,18 @@ class HomeScreen extends StatelessWidget {
           },
         ),
       ),
+
+      appBar: AppBar(
+        title: const Text ("Zot Showers"),
+        actions: <Widget> [
+          IconButton(
+            icon: Icon(Icons.shopping_cart),
+            tooltip: "Go to the next page",
+            onPressed: () {
+              context.go("/shop");
+            }
+          )
+        ]),
     );
   }
 }
