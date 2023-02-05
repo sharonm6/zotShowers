@@ -21,21 +21,21 @@ class AnteaterStatus extends StatelessWidget {
 
     String statusImg;
     if (daysWoShower == 0) {
-      statusImg = "../assets/anteater0.png";
+      statusImg = "assets/anteater0.png";
     } else if (daysWoShower == 1) {
-      statusImg = "../assets/anteater1.png";
+      statusImg = "assets/anteater1.png";
     } else if (daysWoShower == 2) {
-      statusImg = "../assets/anteater2.png";
+      statusImg = "assets/anteater2.png";
     } else if (daysWoShower == 3) {
-      statusImg = "../assets/anteater3.png";
+      statusImg = "assets/anteater3.png";
     } else if (daysWoShower == 4) {
-      statusImg = "../assets/anteater4.png";
+      statusImg = "assets/anteater4.png";
     } else if (daysWoShower == 5) {
-      statusImg = "../assets/anteater5.png";
+      statusImg = "assets/anteater5.png";
     } else if (daysWoShower == 6) {
-      statusImg = "../assets/anteater6.png";
+      statusImg = "assets/anteater6.png";
     } else {
-      statusImg = "../assets/anteater7.png";
+      statusImg = "assets/anteater7.png";
     }
 
     return Column(
