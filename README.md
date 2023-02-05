@@ -8,7 +8,7 @@ To improve the health and wellbeing of CS nerd losers and their loved ones, it i
 2. Add flutter to PATH.
 3. Execute **flutter run**
 
-##zotShower Inspiration
+## zotShower Inspiration
 With countless projects and endless deadlines, CS students everywhere struggle to maintain eat, sleep, and even shower. During crunch time, we all know the struggle of taking care of oneself. Introducing zotShowers. ZotShowers promotes a healthy and safe population by reminding hardworking and busy students to take daily showers. Our app makes it fun and easy with a virtual Peter the Anteater that they must keep clean by logging their showers. In turn, we help prevent the spread of infections, funguses, and diseases. 
 
 Help keep Computer Science students off the streets. For the wellbeing 
