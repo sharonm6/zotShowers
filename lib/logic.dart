@@ -1,17 +1,38 @@
+import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class UserDataCubit extends Cubit<UserData> {
-  UserDataCubit() : super(UserData({}));
+  UserDataCubit() : super(UserData(showerSet: {}, accessories: {}));
 
   void setDidShowerToday() {
-    emit(UserData({...state.showerSet, state.today()}));
+    emit(state.copyWith(showerDate: state.today()));
   }
 }
 
-class UserData {
-  final Set<DateTime> showerSet;
+class Accessory extends Equatable {
+  final String name;
+  final int price;
 
-  UserData(this.showerSet);
+  const Accessory(this.name, this.price);
+
+  @override
+  List<Object?> get props => [name, price];
+}
+
+List<Accessory> ALL_ACCESSORIES = [Accessory("Jersey", 200), Accessory("Hat", 100)];
+
+class UserData extends Equatable {
+  final Set<DateTime> showerSet;
+  final Set<Accessory> accessories;
+
+  UserData({required this.showerSet, required this.accessories});
+
+  UserData copyWith({DateTime? showerDate, Accessory? accessory}) {
+    return UserData(
+      showerSet: showerDate == null ? showerSet : {...showerSet, showerDate},
+      accessories: accessory == null ? accessories : {...accessories, accessory},
+    );
+  }
 
   bool didShowerToday() {
     return didShowerOnDay(today());
@@ -56,4 +77,7 @@ class UserData {
 
     return streak;
   }
+
+  @override
+  List<Object?> get props => [accessories, showerSet];
 }
