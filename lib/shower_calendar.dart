@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 
 import 'logic.dart';
 
-// TO DO: needs name of month and borders around calendar, fix grabbing of image
 // Shows the showering calendar
 class ShowerCalendar extends StatelessWidget {
   final UserData data;
@@ -65,19 +64,38 @@ class ShowerCalendar extends StatelessWidget {
       },
     );
 
-    return GridView.count(
-      crossAxisCount: 7,
-      shrinkWrap: true,
-      physics: const NeverScrollableScrollPhysics(),
-      // Generate 28 widgets that display the corresponding anteater from that day
-      children: (daysList + dayOffset + calendarGridCells)
-          .map((w) => Container(
-                decoration: BoxDecoration(
-                  border: Border.all(color: Colors.black, width: 0.5),
-                ),
-                child: w,
-              ))
-          .toList(),
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        const SizedBox(height: 8),
+        const Center(
+          child: Text(
+            "Your Shower Month",
+            style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+          ),
+        ),
+        // const SizedBox(height: 8),
+        const Text(
+          "FEB",
+          style: TextStyle(fontSize: 12),
+        ),
+        const SizedBox(height: 8),
+        GridView.count(
+          crossAxisCount: 7,
+          shrinkWrap: true,
+          physics: const NeverScrollableScrollPhysics(),
+          // Generate 28 widgets that display the corresponding anteater from that day
+          children: (daysList + dayOffset + calendarGridCells)
+              .map((w) => Container(
+                    decoration: BoxDecoration(
+                      border: Border.all(color: Colors.black, width: 0.5),
+                    ),
+                    child: w,
+                  ))
+              .toList(),
+        ),
+      ],
     );
   }
 }
